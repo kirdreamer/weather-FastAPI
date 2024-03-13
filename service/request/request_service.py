@@ -1,5 +1,5 @@
 import urllib3
-from url_manager import UrlManagerMixin
+from ..url_manager import UrlManagerMixin
 
 
 class RequestManager(UrlManagerMixin):
@@ -7,4 +7,4 @@ class RequestManager(UrlManagerMixin):
         self.http = urllib3.PoolManager()
         
     def performGetRequest(self, url: str):
-        return self.http("GET", url)
+        return self.http.request("GET", url)
