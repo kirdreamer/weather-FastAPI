@@ -1,6 +1,6 @@
 from fastapi import FastAPI
 from service.configuration.config_parser import PropertiesManager
-from api.weather_api import router as weather_router
+from service.api.weather_api import router as weather_router
 
 
 app = FastAPI()
