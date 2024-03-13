@@ -1,7 +1,7 @@
 import configparser
 
 
-DEFAULT_PROPERTY_PATH = "\weather-FastAPI\config.properties"
+DEFAULT_PROPERTY_PATH = "resources/config.properties"
 
 
 class PropertiesManager:
@@ -9,8 +9,9 @@ class PropertiesManager:
         self.properties = self.read_properties_file(file_path)
     
     def read_property(self, property_key: str) -> str:
-        return self.properties.get('DEFAULT', property_key)
+        return self.properties.get("DEFAULT", property_key)
 
+    @staticmethod
     def read_properties_file(file_path: str) -> configparser.ConfigParser:
         config = configparser.ConfigParser()
         config.read(file_path)
