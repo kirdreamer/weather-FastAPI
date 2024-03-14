@@ -12,5 +12,5 @@ def get_weather_for_now(city: str = propertiesManager.read_property("default.cit
     requestManager = RequestManager()
     arguments = {"q": city, "appid": propertiesManager.read_property("appid")}
     response = requestManager.performGetRequest(
-        requestManager.addArgumentsToUrl(propertiesManager.read_property("weather.url"), arguments))
+        requestManager.add_arguments_to_url(propertiesManager.read_property("weather.url"), arguments))
     return f'Response Body: {response.data.decode("utf-8")}'
