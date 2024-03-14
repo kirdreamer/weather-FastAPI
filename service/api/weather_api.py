@@ -1,5 +1,5 @@
 from fastapi import APIRouter
-from service.configuration.config_parser import PropertiesManager
+from service.configuration.properties_manager import PropertiesManager
 from ..request.request_service import RequestManager
 
 
