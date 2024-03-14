@@ -6,5 +6,5 @@ class RequestManager(UrlManagerMixin):
     def __init__(self):
         self.http = urllib3.PoolManager()
         
-    def performGetRequest(self, url: str):
+    def perform_get_request(self, url: str):
         return self.http.request("GET", url)
