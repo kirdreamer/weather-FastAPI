@@ -8,12 +8,9 @@ propertiesManager = PropertiesManager()
 
 
 @router.get("/")
-def get_weather_for_now():
+def get_weather_for_now(city: str = propertiesManager.read_property("default.city")):
     requestManager = RequestManager()
-    arguments = {"q": propertiesManager.read_property("city"), "appid": propertiesManager.read_property("appid")}
+    arguments = {"q": city, "appid": propertiesManager.read_property("appid")}
     response = requestManager.performGetRequest(
         requestManager.addArgumentsToUrl(propertiesManager.read_property("weather.url"), arguments))
-    if response.status != 200:
-        #TODO CustomException
-        raise 
     return f'Response Body: {response.data.decode("utf-8")}'
