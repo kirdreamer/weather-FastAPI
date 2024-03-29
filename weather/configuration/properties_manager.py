@@ -1,6 +1,5 @@
 import configparser
 
-
 DEFAULT_PROPERTY_PATH = "resources/config.properties"
 
 

@@ -1,7 +1,8 @@
 from fastapi import APIRouter
-from service.configuration.properties_manager import PropertiesManager
-from ..request.request_service import RequestManager
 
+from weather.configuration.properties_manager import PropertiesManager
+
+from ..request.request_service import RequestManager
 
 router = APIRouter()
 propertiesManager = PropertiesManager()

@@ -1,4 +1,5 @@
 import urllib3
+
 from ..url_manager import UrlManagerMixin
 
 

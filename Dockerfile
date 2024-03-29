@@ -1,13 +1,17 @@
-FROM python:3.12
+FROM python:3.12.2-slim
 
 WORKDIR /app
 
 RUN python -m pip install --upgrade pip
 
-COPY requirements.txt /app
+RUN python -m pip install poetry
 
-RUN pip install -r requirements.txt
+COPY poetry.lock pyproject.toml /app
 
-COPY . /app
+RUN poetry config virtualenvs.create false \
+    && poetry install --no-dev --no-interaction --no-ansi
 
-CMD [ "uvicorn", "main:app", "--reload", "--host", "0.0.0.0"]
+COPY weather /app/weather
+COPY resources /app/resources
+
+CMD [ "uvicorn", "weather.__main__:app", "--host", "0.0.0.0"]
