@@ -1,14 +1,14 @@
-import httpx
 from fastapi import APIRouter
 
-from weather.configuration.properties_manager import PropertiesManager
+from weather import config
+from weather.api.owm_client import OwmWeatherClient
+from weather.api.schemas import Weather
 
 router = APIRouter()
-propertiesManager = PropertiesManager()
 
 
-@router.get("/")
-def get_weather_for_now(city: str):
-    arguments = {"q": city, "appid": propertiesManager.read_property("appid")}
-    response = httpx.get(propertiesManager.read_property("weather.url"), params=arguments)
-    return f'Response Body: {response.json()}'
+@router.get("/weather")
+def get_weather_for_now(city: str) -> Weather:
+    conf = config.load_from_env()
+    owm_weather = OwmWeatherClient(conf.app_id, conf.weather_url).get_weather_in_kelvin(city)
+    return Weather(temperature=owm_weather.temp)

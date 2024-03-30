@@ -463,4 +463,4 @@ standard = ["colorama (>=0.4)", "httptools (>=0.5.0)", "python-dotenv (>=0.13)",
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.12"
-content-hash = "27e278a0a5513c3584e5164753990a3d9c46a7c512c2a47613bd9595ef59b9ec"
+content-hash = "cd8b4e59f2f0a3d14cfd3834f66e47b632bb179c446c91e7c2d82eb60d5b51c4"

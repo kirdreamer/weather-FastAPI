@@ -5,4 +5,4 @@ from weather.api import weather_api
 app = FastAPI()
 
 
-app.include_router(weather_api.router, prefix="/weather")
+app.include_router(weather_api.router, prefix="/api/v1")
