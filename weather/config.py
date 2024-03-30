@@ -7,6 +7,7 @@ class AppConfig:
     app_id: str
     weather_url: str
 
+
 def load_from_env() -> AppConfig:
     return AppConfig(
         app_id=os.environ["WEATHER_APP_ID"],
