@@ -1,17 +1,14 @@
+import httpx
 from fastapi import APIRouter
 
 from weather.configuration.properties_manager import PropertiesManager
-
-from ..request.request_service import RequestManager
 
 router = APIRouter()
 propertiesManager = PropertiesManager()
 
 
 @router.get("/")
-def get_weather_for_now(city: str = propertiesManager.read_property("default.city")):
-    requestManager = RequestManager()
+def get_weather_for_now(city: str):
     arguments = {"q": city, "appid": propertiesManager.read_property("appid")}
-    response = requestManager.perform_get_request(
-        requestManager.add_arguments_to_url(propertiesManager.read_property("weather.url"), arguments))
-    return f'Response Body: {response.data.decode("utf-8")}'
+    response = httpx.get(propertiesManager.read_property("weather.url"), params=arguments)
+    return f'Response Body: {response.json()}'
