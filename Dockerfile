@@ -12,6 +12,6 @@ RUN poetry config virtualenvs.create false \
     && poetry install --no-dev --no-interaction --no-ansi
 
 COPY weather /app/weather
-COPY resources /app/resources
+#TODO add docker-compose for .env
 
 CMD [ "uvicorn", "weather.__main__:app", "--host", "0.0.0.0"]
