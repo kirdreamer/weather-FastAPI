@@ -2,13 +2,13 @@
 
 Url for requests: 
 ```
-http://127.0.0.1:8000/weather/?city=Berlin
+http://127.0.0.1:8000/api/v1/weather/?city=Berlin
 ```
 The "city" parameter will allow to get information about the weather in the specified city
 
 ```bash 
-> curl http://127.0.0.1:8000/weather/?city=Berlin | jq . 
-{ "temperature": "25.3", "status": "cloudy", } 
+> curl http://127.0.0.1:8000/api/v1/weather/?city=Berlin | jq . 
+{ "temperature": "25.3", "status": "Rain", } 
 ```
 
 To configure the application, a config.properties file must be created in resources/, which must contain the user appid from https://openweathermap.org/.
