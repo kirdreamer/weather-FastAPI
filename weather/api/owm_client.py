@@ -1,9 +1,11 @@
+import json
 import httpx
 from pydantic import BaseModel
 
 
 class OwmWeather(BaseModel):
     temp: float
+    main: str
 
 
 class OwmWeatherClient:
@@ -14,4 +16,5 @@ class OwmWeatherClient:
     def get_weather_in_kelvin(self, city: str) -> OwmWeather:
         arguments = {"q": city, "appid": self.app_id}
         response = httpx.get(self.weather_url, params=arguments)
-        return OwmWeather(**response.json()["main"])
+        data = response.json()
+        return OwmWeather(temp=data["main"]["temp"], main=data["weather"][0]["main"])

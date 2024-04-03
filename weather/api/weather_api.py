@@ -11,4 +11,4 @@ router = APIRouter()
 def get_weather_for_now(city: str) -> Weather:
     conf = config.load_from_env()
     owm_weather = OwmWeatherClient(conf.app_id, conf.weather_url).get_weather_in_kelvin(city)
-    return Weather(temperature=owm_weather.temp)
+    return Weather(temperature=owm_weather.temp, status=owm_weather.main)
